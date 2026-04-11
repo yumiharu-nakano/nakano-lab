@@ -1,0 +1,109 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+/* 左側のサイドバー領域を完全に消して、メインコンテンツを中央に寄せる */
+.theme-doc-sidebar-container {
+  display: none !important;
+}
+
+/* メインコンテンツの幅を調整する */
+.docMainContainer {
+  flex-grow: 1;
+}
+
+/* トグル全体の枠線のスタイル */
+details {
+  border: 0px solid #ffffff; /* 枠線の太さ(2px)、種類(実線:solid)、色(#2e8555) */
+  border-radius: 8px;        /* 枠の角を少し丸くする */
+  padding: 10px 15px;        /* 枠の内側の余白（上下10px、左右15px） */
+  margin-bottom: 15px;       /* 下の要素との隙間 */
+  background-color: transparent; /* 背景色（お好みで） */
+}
+/* マウスを乗せた時の背景色を変える場合 
+summary:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+*/
+/* トグルが開いている時のスタイル */
+details[open] summary {
+  margin-bottom: 10px;
+}
+/* クリックする見出し部分のスタイル */
+summary {
+  /* 👇 ここから2行を変更・追加します 👇 */
+  font-size: var(--ifm-h2-font-size);         /* ## (見出し2) と同じ文字サイズにする */
+  font-weight: var(--ifm-heading-font-weight);/* 見出しと同じ文字の太さにする */
+
+  cursor: pointer;
+  margin: -10px -15px;       
+  padding: 10px 15px;
+  border-radius: 6px;        
+  transition: background-color 0.2s ease;
+}
+
+/* デフォルトの矢印（Safariなどの標準仕様含む）を完全に無効化 */
+summary {
+  list-style: none !important;
+}
+summary::-webkit-details-marker {
+  display: none !important;
+}
+
+/* まっさらな状態から、きれいな三角形を再構築する */
+summary::before {
+  content: '' !important;
+  display: inline-block !important;
+  
+  /* 原因となる余白やサイズを「完全にゼロ」にする */
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;       /* ← 平行四辺形の原因はコレです！ */
+  border-radius: 0 !important;
+  background: none !important; 
+  
+  /* きれいな右向き三角形を作る */
+  border-style: solid !important;
+  border-width: 7px 0 7px 8px !important; 
+  border-color: transparent transparent transparent currentColor !important; 
+  
+  /* 位置の調整 */
+  margin-right: 12px !important; 
+  position: relative;
+  top: -2px; /* ← 文字との高さが合わない場合はこの数字を変更 */
+  
+  /* アニメーションも独自に設定する */
+  transform: rotate(0deg) !important;
+  transition: transform 0.2s ease !important;
+}
+
+/* トグルを開いた時：矢印を90度回転させて「下向き」にする */
+details[open] summary::before {
+  transform: rotate(90deg) !important;
+}
