@@ -91,7 +91,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} Yumiharu Nakano's Lab. Built with Docusaurus.`,
+        //copyright: `Copyright © ${new Date().getFullYear()} Yumiharu Nakano's Lab. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
