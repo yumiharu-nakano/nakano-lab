@@ -41,7 +41,7 @@ Stochastic Optimal Transport, Numerical Analysis of PDEs, Inverse Stochastic Con
 </details>
 
 <details>
-  <summary>Publications</summary>
+  <summary>Papers</summary>
 
 - Y. Nakano, Inverse Stochastic Control via Generalized Schrödinger Problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
 - Y. Nakano and T. Saito, A deep learning approach to multi-marginal optimal transport via Hilbert space embeddings of probability measures. Statist. Comput., 36 (2026), 118.  [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
