@@ -43,7 +43,8 @@ Stochastic Optimal Transport, Numerical Analysis of PDEs, Inverse Stochastic Con
 <details>
   <summary>Papers</summary>
 
-- Y. Nakano, Inverse Stochastic Control via Generalized Schrödinger Problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
+- Y. Nakano, Continuum-marginal optimal transport: a mesh-free kernel method. [arXiv:2604.24226[math.OC]](https://arxiv.org/abs/2604.24226) [[code](https://github.com/yumiharu-nakano/alltimeOT)]
+- Y. Nakano, Inverse stochastic control via generalized Schrödinger problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
 - Y. Nakano and T. Saito, A deep learning approach to multi-marginal optimal transport via Hilbert space embeddings of probability measures. Statist. Comput., 36 (2026), 118.  [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
 - Y. Nakano, Structural and convergence analysis of discrete-time denoising diffusion probabilistic models. [arxiv:2406.01320[math.PR]](https://arxiv.org/abs/2406.01320)
 - Y. Nakano, A kernel-based method for Schrödinger bridges. [arXiv:2310.14522[math.OC].](https://arxiv.org/abs/2310.14522) [[code](https://github.com/yumiharu-nakano/kernelSB)]

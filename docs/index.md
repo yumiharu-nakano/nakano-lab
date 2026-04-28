@@ -50,6 +50,7 @@ Stochastic Optimal Transport, Numerical Analysis of PDEs, Inverse Stochastic Con
 <details>
   <summary>論文</summary>
 
+- Y. Nakano, Continuum-marginal optimal transport: a mesh-free kernel method. [arXiv:2604.24226[math.OC]](https://arxiv.org/abs/2604.24226) [[code](https://github.com/yumiharu-nakano/alltimeOT)]
 - Y. Nakano, Inverse Stochastic Control via Generalized Schrödinger Problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
 - Y. Nakano and T. Saito, A deep learning approach to multi-marginal optimal transport via Hilbert space embeddings of probability measures. Statist. Comput., 36 (2026), 118.  [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
 - Y. Nakano, Structural and convergence analysis of discrete-time denoising diffusion probabilistic models. [arxiv:2406.01320[math.PR]](https://arxiv.org/abs/2406.01320)
@@ -150,7 +151,7 @@ The 56th ISCIE International Symposium on Stochastic Systems Theory and Its Appl
 - Y. Nakano, Inverse stochastic optimal controls, SIAM Conference on Control and Its Applications, July 21, 2021, Virtual Conference.
 - 三輪崇史, COVID-19の数理モデルと確率制御, 日本応用数理学会第6回学生研究発表会, 2021年3月8日, オンライン
 - 豊嶋隆晃, 中野張, Lévy過程に駆動される境界条件付きHeath–Jarrow–Morton–Musiela方程式について, 日本数学会2019年度秋季総合分科会, 2019年9月18日, 金沢大学
-- 中野張, 非線形放物型PDEに対するカーネル選点法の収束について, 
+- 中野張, 非線形放物型PDEに対するカーネル選点法の収束について,
 次世代の科学技術を支える数値解析学の基盤整備と応用展開, 2018年11月16日, 京都大学数理解析研究所.
 - 加藤京士, 感染症数理モデルにおける確率最適制御, 日本応用数理学会2018年度年会, 2018年9月5日, 名古屋大学
 - 田中俊介, 再生核補間を用いた後退確率微分方程式の数値解析, 日本応用数理学会2018年度年会, 2018年9月4日, 名古屋大学
