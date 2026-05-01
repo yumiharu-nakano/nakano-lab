@@ -50,47 +50,47 @@ Stochastic Optimal Transport, Numerical Analysis of PDEs, Inverse Stochastic Con
 <details>
   <summary>論文</summary>
 
-- Y. Nakano, Continuum-marginal optimal transport: a mesh-free kernel method. [arXiv:2604.24226[math.OC]](https://arxiv.org/abs/2604.24226) [[code](https://github.com/yumiharu-nakano/alltimeOT)]
-- Y. Nakano, Inverse Stochastic Control via Generalized Schrödinger Problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
-- Y. Nakano and T. Saito, A deep learning approach to multi-marginal optimal transport via Hilbert space embeddings of probability measures. Statist. Comput., 36 (2026), 118.  [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
-- Y. Nakano, Structural and convergence analysis of discrete-time denoising diffusion probabilistic models. [arxiv:2406.01320[math.PR]](https://arxiv.org/abs/2406.01320)
-- Y. Nakano, A kernel-based method for Schrödinger bridges. [arXiv:2310.14522[math.OC].](https://arxiv.org/abs/2310.14522) [[code](https://github.com/yumiharu-nakano/kernelSB)]
-- Y. Nakano, A convergence theory for differentiable non-monotone schemes for fully nonlinear parabolic equations.  [arXiv:1803.09446[math.NA]](https://arxiv.org/abs/1803.09446).
-- T. Saito and Y. Nakano, Solving Monge Problem by Hilbert Space Embeddings of Probability Measures, Proceedings of the 14th International Conference on Operations Research and Enterprise Systems - Volume 1: ICORES, SciTePress, pp. 294-300, 2025. (See also [arXiv:2412.03478[math.OC]](https://arxiv.org/abs/2412.03478).)
-- K. Endo and Y. Nakano, Weak approximation of Schrödinger-Föllmer diffusion, Statist. Probab. Lett[.](https://arxiv.org/abs/2403.03446), 213 (2024), 110171.
-- Y. Nakano, Inverse stochastic [](https://arxiv.org/abs/2005.11485)optimal [](https://arxiv.org/abs/2005.11485)controls, Automatica, 149 (2023), 110831.
-- Y. Kinoshita and Y. Nakano, Kernel-based collocation methods for Heath-Jarrow-Morton models with Musiela parametrization, Stochastics, 93 (2021), 921-944.
-- 中野張, カーネル選点法によるZakai方程式の数値解析，システム／制御／情報，64 (2020), 258-263.
-- 中野張，非線形偏微分方程式に対するカーネル選点法，応用数理，4 (2019), 18-25．
-- Y. Nakano, Kernel-based collocation methods for Zakai equations, Stoch. Partial Differ. Equ. Anal. Comput., 7 (2019), 476-494. (See also [arXiv:1710.09090[math.NA]](https://arxiv.org/abs/1710.09090).)
-- Y. Nakano, Convergence of the meshfree collocation methods for fully nonlinear parabolic equations, Numer. Math., 136 (2017), 703-723. (See also [arXiv:1408.5195 [math.NA]](https://arxiv.org/abs/1408.5195).)
-- Y. Nakano, On quadratic approximations for Hamilton-Jacobi-Bellman equations, Automatica, 66 (2016), 205-217.
-- Y. Nakano, On a law of large numbers for insurance risks. [arXiv:1601.03171[q-fin.RM]](https://arxiv.org/abs/1601.03171).
-- Y. Nakano, On the design of catastrophe bonds, unpublished.
-- M. Ieda, T. Yamashita, and Y. Nakano, A liability tracking portfolio for pension
+- Y. Nakano. Continuum-marginal optimal transport: a mesh-free kernel method. [arXiv:2604.24226[math.OC]](https://arxiv.org/abs/2604.24226) [[code](https://github.com/yumiharu-nakano/alltimeOT)]
+- Y. Nakano. Inverse stochastic control via generalized Schrödinger problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
+- Y. Nakano and T. Saito. A deep learning approach to multi-marginal optimal transport via Hilbert space embeddings of probability measures. Statist. Comput., 36 (2026), 118.  [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
+- Y. Nakano. Structural and convergence analysis of discrete-time denoising diffusion probabilistic models. [arxiv:2406.01320[math.PR]](https://arxiv.org/abs/2406.01320)
+- Y. Nakano. A kernel-based method for Schrödinger bridges. [arXiv:2310.14522[math.OC].](https://arxiv.org/abs/2310.14522) [[code](https://github.com/yumiharu-nakano/kernelSB)]
+- Y. Nakano. A convergence theory for differentiable non-monotone schemes for fully nonlinear parabolic equations.  [arXiv:1803.09446[math.NA]](https://arxiv.org/abs/1803.09446).
+- T. Saito and Y. Nakano. Solving Monge Problem by Hilbert Space Embeddings of Probability Measures, Proceedings of the 14th International Conference on Operations Research and Enterprise Systems - Volume 1: ICORES, SciTePress, pp. 294-300, 2025. (See also [arXiv:2412.03478[math.OC]](https://arxiv.org/abs/2412.03478).)
+- K. Endo and Y. Nakano. Weak approximation of Schrödinger-Föllmer diffusion, Statist. Probab. Lett., 213 (2024), 110171.
+- Y. Nakano. Inverse stochastic optimal controls, Automatica, 149 (2023), 110831.
+- Y. Kinoshita and Y. Nakano. Kernel-based collocation methods for Heath-Jarrow-Morton models with Musiela parametrization, Stochastics, 93 (2021), 921-944.
+- 中野張. カーネル選点法によるZakai方程式の数値解析，システム／制御／情報，64 (2020), 258-263.
+- 中野張. 非線形偏微分方程式に対するカーネル選点法，応用数理，4 (2019), 18-25．
+- Y. Nakano. Kernel-based collocation methods for Zakai equations, Stoch. Partial Differ. Equ. Anal. Comput., 7 (2019), 476-494. (See also [arXiv:1710.09090[math.NA]](https://arxiv.org/abs/1710.09090).)
+- Y. Nakano. Convergence of the meshfree collocation methods for fully nonlinear parabolic equations, Numer. Math., 136 (2017), 703-723. (See also [arXiv:1408.5195 [math.NA]](https://arxiv.org/abs/1408.5195).)
+- Y. Nakano. On quadratic approximations for Hamilton-Jacobi-Bellman equations, Automatica, 66 (2016), 205-217.
+- Y. Nakano. On a law of large numbers for insurance risks. [arXiv:1601.03171[q-fin.RM]](https://arxiv.org/abs/1601.03171).
+- Y. Nakano. On the design of catastrophe bonds, unpublished.
+- M. Ieda, T. Yamashita, and Y. Nakano. A liability tracking portfolio for pension
 fund management, Proceedings of the 46th ISCIE International Symposium on Stochastic
 Systems Theory and Its Applications, pp. 112-117, 2015.
-- A. Iizuka and Y. Nakano, On historical value-at-risk under distribution uncertainty, J. Math. Finance, 5 (2015), 113-118.
-- Y. Nakano, Quasi-Monte Carlo methods for Choquet integrals, J. Comput. Appl. Math., 287 (2015), 63-66.
-- Y. Nakano, An approximation scheme for stochastic controls in continuous time, Jpn. J. Ind. Appl. Math., 31 (2014), 681-696.
-- M. Ieda, T. Yamashita, and Y. Nakano, A liability tracking approach to long term management of pension funds, J. Math. Finance, 3 (2013), 392-400.
-- Y. Nakano, On approximating law-invariant comonotonic coherent risk measures, Astin Bulletin, 42 (2012), 343-353.
-- Y. Nakano, Partial hedging for defaultable claims, Adv. Math. Econ., 14 (2011), 127-145.
-- Y. Nakano, Quantile hedging for defaultable claims, Recent Advances in Financial Engineering: Proceedings of the KIER-TMU International Workshop on Financial Engineering 2009, World Scientific, 2010, 219-230.
-- K. Fukuda, A. Inoue, and Y. Nakano, Optimal intertemporal risk allocation
+- A. Iizuka and Y. Nakano. On historical value-at-risk under distribution uncertainty, J. Math. Finance, 5 (2015), 113-118.
+- Y. Nakano. Quasi-Monte Carlo methods for Choquet integrals, J. Comput. Appl. Math., 287 (2015), 63-66.
+- Y. Nakano. An approximation scheme for stochastic controls in continuous time, Jpn. J. Ind. Appl. Math., 31 (2014), 681-696.
+- M. Ieda, T. Yamashita, and Y. Nakano. A liability tracking approach to long term management of pension funds, J. Math. Finance, 3 (2013), 392-400.
+- Y. Nakano. On approximating law-invariant comonotonic coherent risk measures, Astin Bulletin, 42 (2012), 343-353.
+- Y. Nakano. Partial hedging for defaultable claims, Adv. Math. Econ., 14 (2011), 127-145.
+- Y. Nakano. Quantile hedging for defaultable claims, Recent Advances in Financial Engineering: Proceedings of the KIER-TMU International Workshop on Financial Engineering 2009, World Scientific, 2010, 219-230.
+- K. Fukuda, A. Inoue, and Y. Nakano. Optimal intertemporal risk allocation
 applied to insurance pricing. [arXiv:0711.1143[q-fin.PR]](https://arxiv.org/abs/0711.1143).
-- K. Fukuda, A. Inoue, and Y. Nakano, Dynamic risk diversification
+- K. Fukuda, A. Inoue, and Y. Nakano. Dynamic risk diversification
 and insurance premium principles. [arXiv:1303.3956[math.PR]](https://arxiv.org/abs/0906.1632).
-- K. Fukuda, A. Inoue, and Y. Nakano, Premium Calculation and Optimal Intertemporal Risk Diversification, 数理解析研究所講究録, 1580 (2008), 150-162.
-- A. Inoue and Y. Nakano, Remark on optimal investment in a market with memory, Theory of Stochastic Processes, 13 (2007), 66-76.
-- A. Inoue and Y. Nakano, Optimal long term investment model with memory, Appl. Math. Optim., 55 (2007), 93-122.
-- A. Inoue, Y. Nakano and V. Anh, Binary market models with memory, Statist. Probab. Lett., 77 (2007), 256-264.
+- K. Fukuda, A. Inoue, and Y. Nakano. Premium Calculation and Optimal Intertemporal Risk Diversification, 数理解析研究所講究録, 1580 (2008), 150-162.
+- A. Inoue and Y. Nakano. Remark on optimal investment in a market with memory, Theory of Stochastic Processes, 13 (2007), 66-76.
+- A. Inoue and Y. Nakano. Optimal long term investment model with memory, Appl. Math. Optim., 55 (2007), 93-122.
+- A. Inoue, Y. Nakano and V. Anh. Binary market models with memory, Statist. Probab. Lett., 77 (2007), 256-264.
 - Y. Nakano, Mean-risk optimization for index tracking, Statist. Decisions, 24 (2006), 189-207.
-- A. Inoue, Y. Nakano and V. Anh, Linear filtering of systems with memory and application to finance, J. Appl. Math. Stochastic Anal., (2006), Art. ID 53104, 26pp.
-- Y. Nakano, Minimization of shortfall risk in a jump-diffusion model, Statist. Probab. Lett.,  67 (2004), 87-95.
-- Y. Nakano, Efficient hedging with coherent risk measure, J. Math. Anal. Appl., 293 (2004), 345-354.
-- Y. Nakano, Minimizing coherent risk measures of shortfall in discrete-time models under cone constraints, Appl. Math. Finance, 10 (2003), 163-181.
-- Y. Nakano, Optimal hedging in the presence of shortfall risk, Doctoral Dissertation, Hokkaido University, 2005.
+- A. Inoue, Y. Nakano and V. Anh. Linear filtering of systems with memory and application to finance, J. Appl. Math. Stochastic Anal., (2006), Art. ID 53104, 26pp.
+- Y. Nakano. Minimization of shortfall risk in a jump-diffusion model, Statist. Probab. Lett.,  67 (2004), 87-95.
+- Y. Nakano. Efficient hedging with coherent risk measure, J. Math. Anal. Appl., 293 (2004), 345-354.
+- Y. Nakano. Minimizing coherent risk measures of shortfall in discrete-time models under cone constraints, Appl. Math. Finance, 10 (2003), 163-181.
+- Y. Nakano. Optimal hedging in the presence of shortfall risk, Doctoral Dissertation, Hokkaido University, 2005.
 </details>
 
 <details>
