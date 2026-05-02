@@ -13,19 +13,21 @@ Department of Mathematical and Computing Science, School of Computing, Institute
 
 ---
 
-## 研究分野
+## 研究テーマ
 
-確率微分方程式，確率過程の推定と制御，数値解析
+確率制御・最適輸送・推論の計算数理
 
-Stochastic Differential Equations, Estimation and Control of Stochastic Processes, Numerical Analysis
+Computational mathematics for stochastic control, optimal transport, and inference
 
 ---
 
-## テーマ
+## 研究内容
 
-確率最適輸送，PDEの数値解析，逆確率制御，数理ファイナンス
+- HJB方程式の数値解析と確率最適制御
+- カーネル法によるシュレディンガー橋と最適輸送
+- 確率システムのフィルタリングと逆問題
+- 応用: 生成モデル，数理ファイナンス・保険数理
 
-Stochastic Optimal Transport, Numerical Analysis of PDEs, Inverse Stochastic Controls, Mathematical Finance
 
 <details>
   <summary>2026年度メンバー</summary>
