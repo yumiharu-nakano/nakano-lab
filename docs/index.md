@@ -28,6 +28,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 - 確率システムのフィルタリングと逆問題
 - 応用: 生成モデル，数理ファイナンス・保険数理
 
+---
 
 <details>
   <summary>2026年度メンバー</summary>

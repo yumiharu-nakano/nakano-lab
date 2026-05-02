@@ -17,12 +17,14 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 
 ---
 
-## Topics
+## Topics
 
 - Numerical analysis of HJB equations and stochastic optimal control
 - Kernel-based methods for Schrödinger bridges and optimal transport
 - Filtering and inverse problems for stochastic systems
 - Applications: generative models, mathematical finance and insurance
+
+---
 
 <details>
   <summary>Members (AY 2026)</summary>
