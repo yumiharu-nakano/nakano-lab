@@ -100,7 +100,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 
 - Introduction to Probability Theory
 
-[probab01.pdf](/pdf/probab01.pdf)
+[probab02.pdf](/pdf/probab02.pdf)
 
 - Introduction to Markov Processes
 

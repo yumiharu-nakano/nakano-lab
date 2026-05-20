@@ -109,7 +109,7 @@ and insurance premium principles. [arXiv:1303.3956[math.PR]](https://arxiv.org/a
 
 - 確率論基礎
 
-[probab01.pdf](/pdf/probab01.pdf)
+[probab02.pdf](/pdf/probab02.pdf)
 
 - マルコフ過程入門
 
