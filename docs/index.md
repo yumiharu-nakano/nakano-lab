@@ -117,7 +117,7 @@ and insurance premium principles. [arXiv:1303.3956[math.PR]](https://arxiv.org/a
 
 - Stochastic Differential Equations
 
-[sde07.pdf](/pdf/sde07.pdf)
+[sde09.pdf](/pdf/sde09.pdf)
 </details>
 
 <details>

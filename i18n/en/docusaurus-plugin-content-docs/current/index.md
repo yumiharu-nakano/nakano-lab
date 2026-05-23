@@ -108,7 +108,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 
 - Stochastic Differential Equations
 
-[sde07.pdf](/pdf/sde07.pdf)
+[sde09.pdf](/pdf/sde09.pdf)
 </details>
 
 <details>
