@@ -53,7 +53,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 - Y. Nakano. Inverse stochastic control via generalized Schrödinger problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
 - Y. Nakano and T. Saito. A deep learning approach to multi-marginal optimal transport via Hilbert space embeddings of probability measures. Statist. Comput., 36 (2026), 118.  [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
 - Y. Nakano. Structural and convergence analysis of discrete-time denoising diffusion probabilistic models. [arxiv:2406.01320[math.PR]](https://arxiv.org/abs/2406.01320)
-- Y. Nakano. A kernel-based method for Schrödinger bridges. [arXiv:2310.14522[math.OC].](https://arxiv.org/abs/2310.14522) [[code](https://github.com/yumiharu-nakano/kernelSB)]
+- Y. Nakano. A kernel-based method for Schrödinger bridges. Jpn. J. Ind. Appl. Math., 43 (2026), 46. [[code](https://github.com/yumiharu-nakano/kernelSB)]
 - Y. Nakano. Convergence of differentiable non-monotone schemes for fully nonlinear parabolic equations. [arXiv:1803.09446[math.NA]](https://arxiv.org/abs/1803.09446).
 - T. Saito and Y. Nakano. Solving Monge Problem by Hilbert Space Embeddings of Probability Measures, Proceedings of the 14th International Conference on Operations Research and Enterprise Systems - Volume 1: ICORES, SciTePress, pp. 294-300, 2025. (See also [arXiv:2412.03478[math.OC]](https://arxiv.org/abs/2412.03478).)
 - K. Endo and Y. Nakano. Weak approximation of Schrödinger-Föllmer diffusion, Statist. Probab. Lett., 213 (2024), 110171.
