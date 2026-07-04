@@ -24,9 +24,9 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 ## 研究内容
 
 - HJB方程式の数値解析と確率最適制御
-- カーネル法によるシュレディンガー橋と最適輸送
+- 確率最適輸送と生成モデル
 - 確率システムのフィルタリングと逆問題
-- 応用: 生成モデル，数理ファイナンス・保険数理
+- 数理ファイナンス・保険数理
 
 ---
 
