@@ -165,7 +165,7 @@ The 56th ISCIE International Symposium on Stochastic Systems Theory and Its Appl
 <details>
   <summary>学士・修士・博士論文（2018-）</summary>
 
-- YUZHOU CHEN, Mean Field Games in Dynamic, Ticket Pricing, 2026年度修士論文, デルフト工科大学
+- YUZHOU CHEN, Mean Field Games in Dynamic Ticket Pricing, 2026年度修士論文, デルフト工科大学
 - 金子竜也, 特異なドリフト係数をもつ Schrödinger–Föllmer サンプラーの弱収束性に関する定量的な誤差解析, 2026年度修士論文
 - 森彬, 確率局所ボラティリティフレームワークを用いたインプライドボラティリティ誤差の検証, 2025年度修士論文
 - 渡辺啓介, ランダム化シグネチャーを用いたポートフォリオ最適化, 2025年度修士論文

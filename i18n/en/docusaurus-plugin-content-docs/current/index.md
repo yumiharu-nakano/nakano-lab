@@ -153,7 +153,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 <details>
   <summary>Theses (2018-)</summary>
 
-- Y. Chen, Mean Field Games in Dynamic, Ticket Pricing, Master's Thesis, Delft University of Technology, AY 2026.
+- Y. Chen, Mean Field Games in Dynamic Ticket Pricing, Master's Thesis, Delft University of Technology, AY 2026.
 - T. Kaneko, Quantitative Weak Error Analysis of Schrödinger–Föllmer Samplers with Singular Drift Coefficients, Master's Thesis, AY 2026. (in Japanese)
 - A. Mori, Verification of implied volatility error using the stochastic local volatility framework, Master's Thesis, AY 2025. (in Japanese)
 - K. Watanabe, Portfolio optimization using randomized signatures, Master's Thesis, AY 2025. (in Japanese)
