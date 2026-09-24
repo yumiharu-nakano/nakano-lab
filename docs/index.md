@@ -35,8 +35,6 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 
   | 中野 張（NAKANO, Yumiharu） | 准教授 | nakano(at)comp.isct.ac.jp |
   | --- | --- | --- |
-  | 金子 竜也（KANEKO, Tatsuya） | M2 |  |
-  | CHEN YUZHOU | M2 |  |
   | 平田 竜士（HIRATA, Ryuji） | M2 |  |
   | 勝部 太陽（KATSUBE, Taiyo） | M2 |  |
   | 竹本 紘希（TAKEMOTO, Hiroki） | M2 |  |
@@ -167,8 +165,10 @@ The 56th ISCIE International Symposium on Stochastic Systems Theory and Its Appl
 <details>
   <summary>学士・修士・博士論文（2018-）</summary>
 
-- 森 彬, 確率局所ボラティリティフレームワークを用いたインプライドボラティリティ誤差の検証, 2025年度修士論文
-- 渡辺 啓介, ランダム化シグネチャーを用いたポートフォリオ最適化, 2025年度修士論文
+- YUZHOU CHEN, Mean Field Games in Dynamic, Ticket Pricing, 2026年度修士論文, デルフト工科大学
+- 金子竜也, 特異なドリフト係数をもつ Schrödinger–Föllmer サンプラーの弱収束性に関する定量的な誤差解析, 2026年度修士論文
+- 森彬, 確率局所ボラティリティフレームワークを用いたインプライドボラティリティ誤差の検証, 2025年度修士論文
+- 渡辺啓介, ランダム化シグネチャーを用いたポートフォリオ最適化, 2025年度修士論文
 - 井上智揮, ニューラル SDE による深層ヘッジ, 2024年度修士論文
 - 大瀧稜斗, 機械学習によるローカルボラティリティの予測, 2024年度修士論文
 - 小野瑠聖, 無裁定ボラティリティ曲面の構築, 2024年度修士論文
