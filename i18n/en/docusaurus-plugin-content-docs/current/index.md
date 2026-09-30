@@ -113,6 +113,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 <details>
   <summary>Oral Presentations (2018-)</summary>
 
+- Y. Nakano, Kernel-based potential mean-field games with unbiased random Fourier U-statistics, JSIAM Annual Meeting 2026, September 17, 2026, Fukuoka International Congress Center. (in Japanese)
 - K. Watanabe, Portfolio optimization using randomized signatures, JSIAM 11th Student Research Presentation, March 12, 2025, The University of Tokyo. (in Japanese)
 - Y. Nakano, On the convergence of differentiable approximation schemes for Hamilton-Jacobi-Bellman equations, JSIAM 22nd Joint Workshop, March 9, 2026, The University of Tokyo. (in Japanese)
 - Y. Nakano, Error estimation of Denoising Diffusion Probabilistic Models, Symposium on Probability Theory 2025, December 17, 2025, Kumamoto University. (in Japanese)
