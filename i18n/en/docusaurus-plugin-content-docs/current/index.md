@@ -46,7 +46,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 <details>
   <summary>Papers</summary>
 
-- Y. Nakano. An inverse-stochastic-control Galerkin estimator for drift potentials. [arXiv:2610.04268[math.OC]](https://arxiv.org/abs/2610.04268)
+- Y. Nakano. An inverse-stochastic-control Galerkin estimator for drift potentials. [arXiv:2610.04268[math.OC]](https://arxiv.org/abs/2610.04268) [[code](https://github.com/yumiharu-nakano/inverse-drift-potential)]
 - Y. Nakano. Kernel-based potential mean-field games with unbiased random Fourier U-statistics. [arXiv:2605.29371[math.OC]](https://arxiv.org/abs/2605.29371) [[code](https://github.com/yumiharu-nakano/kernelMFG-RFU)]
 - Y. Nakano. Continuum-marginal optimal transport: a mesh-free kernel method. [arXiv:2604.24226[math.OC]](https://arxiv.org/abs/2604.24226) [[code](https://github.com/yumiharu-nakano/alltimeOT)]
 - Y. Nakano. Inverse stochastic control via generalized Schrödinger problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
