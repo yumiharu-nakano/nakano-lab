@@ -50,7 +50,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 - Y. Nakano. An inverse-stochastic-control Galerkin estimator for drift potentials. [arXiv:2610.04268[math.OC]](https://arxiv.org/abs/2610.04268) [[code](https://github.com/yumiharu-nakano/inverse-drift-potential)]
 - Y. Nakano. Kernel-based potential mean-field games with unbiased random Fourier U-statistics. [arXiv:2605.29371[math.OC]](https://arxiv.org/abs/2605.29371) [[code](https://github.com/yumiharu-nakano/kernelMFG-RFU)]
 - Y. Nakano. Continuum-marginal optimal transport: a mesh-free kernel method. [arXiv:2604.24226[math.OC]](https://arxiv.org/abs/2604.24226) [[code](https://github.com/yumiharu-nakano/alltimeOT)]
-- Y. Nakano. Inverse stochastic control via generalized Schrödinger problems. [arXiv:2601.09210[math.OC]](https://arxiv.org/abs/2601.09210)
+- Y. Nakano. Inverse stochastic control via generalized Schrödinger problems. Systems & Control Letters, 218 (2026), 106614. [doi:10.1016/j.sysconle.2026.106614](https://doi.org/10.1016/j.sysconle.2026.106614)
 - Y. Nakano and T. Saito. A deep learning approach to multi-marginal optimal transport via Hilbert space embeddings of probability measures. Statist. Comput., 36 (2026), 118.  [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
 - Y. Nakano. Structural and convergence analysis of discrete-time denoising diffusion probabilistic models. [arxiv:2406.01320[math.PR]](https://arxiv.org/abs/2406.01320)
 - Y. Nakano. A kernel-based method for Schrödinger bridges. Jpn. J. Ind. Appl. Math., 43 (2026), 46. [[code](https://github.com/yumiharu-nakano/kernelSB)]
