@@ -66,4 +66,4 @@ See the [top page](/) for the full list of publications.
 
 The research tree visualizes the overall course of the research and how each area converges into the integrated program.
 
-👉 [**View the research tree**](https://yumiharu-nakano.github.io/nakano-lab/tree-en.html)
+▶︎ [**View the research tree**](https://yumiharu-nakano.github.io/nakano-lab/tree-en.html)

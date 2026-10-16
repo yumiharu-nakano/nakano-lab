@@ -24,7 +24,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 - Filtering and inverse problems for stochastic systems
 - Mathematical finance and insurance
 
-👉 For our current integrated program, "A theory of identification and generation in stochastic differential equations", see the [Research Program](/program) page; for an overview of the research as a whole, see the [Research Tree](https://yumiharu-nakano.github.io/nakano-lab/tree-en.html).
+▶︎ For our current integrated program, "A theory of identification and generation in stochastic differential equations", see the [Research Program](/program) page; for an overview of the research as a whole, see the [Research Tree](https://yumiharu-nakano.github.io/nakano-lab/tree-en.html).
 
 ---
 

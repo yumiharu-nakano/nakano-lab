@@ -70,4 +70,4 @@ Identify, from observed trajectories and snapshots, the generator driving a stoc
 
 研究全体の流れと，各分野が統合プログラムへ合流していく様子を系統樹として可視化しています．
 
-👉 [**研究系統樹を見る**](https://yumiharu-nakano.github.io/nakano-lab/tree.html)
+▶︎ [**研究系統樹を見る**](https://yumiharu-nakano.github.io/nakano-lab/tree.html)
