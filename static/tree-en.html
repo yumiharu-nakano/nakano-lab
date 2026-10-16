@@ -9,34 +9,37 @@
 </script>
 <style>
   :root{
-    --bg:#0f1115; --panel:#171a21; --ink:#e8eaed; --sub:#9aa3b2;
-    --line:#2a2f3a; --accent:#7aa2f7;
+    --bg:#1b1b1d; --panel:#242526; --ink:#e3e3e3; --sub:#a9aeb5;
+    --line:#3e4147; --accent:#25c2a0;
     --past:#6b7280; --num:#38bdf8; --inv:#f472b6; --ot:#a78bfa;
     --gen:#34d399; --mfg:#fbbf24; --root:#94a3b8; --future:#f97316;
     --role-ink:#0b0d11;
-    --canopy-bg1:#1c241d; --canopy-bg2:#171a21; --canopy-border:#2f5e44; --canopy-desc:#bfe8d4;
+    --canopy-bg1:#1f2a24; --canopy-bg2:#242526; --canopy-border:#2f5e44; --canopy-desc:#bfe8d4;
+    --nav-bg:#242526; --nav-ink:#e3e3e3; --nav-hover:rgba(255,255,255,.08); --foot-bg:#303846;
   }
   @media (prefers-color-scheme: light){
     :root:not([data-theme="dark"]){
-      --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2430; --sub:#5b6472;
-      --line:#d8dde6; --accent:#2f6feb;
-      --past:#8a93a3; --num:#0284c7; --inv:#db2777; --ot:#7c3aed;
-      --gen:#059669; --mfg:#d97706; --root:#64748b; --future:#ea580c;
-      --role-ink:#ffffff;
-      --canopy-bg1:#f0f7f2; --canopy-bg2:#fbfdfc; --canopy-border:#9fcdb4; --canopy-desc:#1f5b3f;
+    --bg:#ffffff; --panel:#ffffff; --ink:#1c1e21; --sub:#525860;
+    --line:#dadde1; --accent:#2e8555;
+    --past:#8a93a3; --num:#0284c7; --inv:#db2777; --ot:#7c3aed;
+    --gen:#059669; --mfg:#d97706; --root:#64748b; --future:#ea580c;
+    --role-ink:#ffffff;
+    --canopy-bg1:#f0f7f2; --canopy-bg2:#fbfdfc; --canopy-border:#9fcdb4; --canopy-desc:#1f5b3f;
+    --nav-bg:#ffffff; --nav-ink:#1c1e21; --nav-hover:rgba(0,0,0,.05); --foot-bg:#303846;
     }
   }
   :root[data-theme="light"]{
-      --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2430; --sub:#5b6472;
-      --line:#d8dde6; --accent:#2f6feb;
-      --past:#8a93a3; --num:#0284c7; --inv:#db2777; --ot:#7c3aed;
-      --gen:#059669; --mfg:#d97706; --root:#64748b; --future:#ea580c;
-      --role-ink:#ffffff;
-      --canopy-bg1:#f0f7f2; --canopy-bg2:#fbfdfc; --canopy-border:#9fcdb4; --canopy-desc:#1f5b3f;
+    --bg:#ffffff; --panel:#ffffff; --ink:#1c1e21; --sub:#525860;
+    --line:#dadde1; --accent:#2e8555;
+    --past:#8a93a3; --num:#0284c7; --inv:#db2777; --ot:#7c3aed;
+    --gen:#059669; --mfg:#d97706; --root:#64748b; --future:#ea580c;
+    --role-ink:#ffffff;
+    --canopy-bg1:#f0f7f2; --canopy-bg2:#fbfdfc; --canopy-border:#9fcdb4; --canopy-desc:#1f5b3f;
+    --nav-bg:#ffffff; --nav-ink:#1c1e21; --nav-hover:rgba(0,0,0,.05); --foot-bg:#303846;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Meiryo,system-ui,sans-serif;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
     -webkit-font-smoothing:antialiased;line-height:1.5}
   .wrap{max-width:1180px;margin:0 auto;padding:28px 22px 80px}
   header h1{font-size:23px;margin:0 0 4px;letter-spacing:.2px}
@@ -49,7 +52,23 @@
   .btn{background:var(--panel);border:1px solid var(--line);color:var(--ink);
     font-size:12.5px;padding:6px 12px;border-radius:7px;cursor:pointer}
   .btn:hover{border-color:var(--accent)}
-  .btn.theme{margin-left:auto}
+  .sitebar{position:sticky;top:0;z-index:10;background:var(--nav-bg);
+    box-shadow:0 1px 2px 0 rgba(0,0,0,.1);height:60px;padding:8px 16px;display:flex;align-items:center}
+  .sitebar a,.sitebar button{color:var(--nav-ink);text-decoration:none;font-size:16px;font-weight:500;
+    padding:4px 12px;border-radius:6px;white-space:nowrap}
+  .sitebar a:hover{color:var(--accent)}
+  .sitebar a.brand{font-weight:700;padding-left:0}
+  .sitebar a.active{color:var(--accent)}
+  .sitebar .spacer{flex:1 1 auto}
+  .sitebar .themebtn{background:none;border:none;cursor:pointer;width:36px;height:36px;padding:0;
+    border-radius:50%;font-size:18px;line-height:36px;text-align:center}
+  .sitebar .themebtn:hover{background:var(--nav-hover)}
+  .sitefoot{background:var(--foot-bg);height:64px}
+  @media(max-width:700px){
+    .sitebar{padding:8px 10px;overflow-x:auto}
+    .sitebar a{font-size:15px;padding:4px 8px}
+    .sitebar a.hide-sm{display:none}
+  }
 
   .legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 22px;
     font-size:11.5px;color:var(--sub);align-items:center}
@@ -112,20 +131,27 @@
 </style>
 </head>
 <body>
+<nav class="sitebar" aria-label="Site navigation">
+  <a class="brand" href="https://yumiharu-nakano.github.io/nakano-lab/en/">Nakano Lab</a>
+  <a class="hide-sm" href="https://yumiharu-nakano.github.io/nakano-lab/en/program">Research Program</a>
+  <a class="active hide-sm" href="#" aria-current="page">Research Tree</a>
+  <span class="spacer"></span>
+  <a href="tree.html">日本語</a>
+  <a class="hide-sm" href="https://github.com/yumiharu-nakano/">GitHub</a>
+  <button class="themebtn" id="themeToggle" type="button"></button>
+</nav>
 <div class="wrap">
   <header>
     <h1>Yumiharu Nakano — Research Tree</h1>
     <p class="lede">Computational mathematics for stochastic control, optimal transport, and inference</p>
     <p class="meta">Department of Mathematical and Computing Science, School of Computing, Institute of Science Tokyo ／ Publications:
       <a href="https://yumiharu-nakano.github.io/nakano-lab/en/" target="_blank">nakano-lab</a>
-      &nbsp;|&nbsp; Click a node to expand or collapse its branch
-      &nbsp;|&nbsp; <a href="tree.html">日本語</a></p>
+      &nbsp;|&nbsp; Click a node to expand or collapse its branch</p>
   </header>
 
   <div class="controls">
     <button class="btn" id="expandAll">Expand all</button>
     <button class="btn" id="collapseAll">Trunks only</button>
-    <button class="btn theme" id="themeToggle" type="button"></button>
   </div>
 
   <div class="legend">
@@ -142,6 +168,7 @@
   <ul class="tree" id="tree"></ul>
 
 </div>
+<footer class="sitefoot"></footer>
 
 <script>
 const T = {
@@ -303,8 +330,9 @@ function applyTheme(choice){
   const root = document.documentElement;
   if(choice) root.setAttribute('data-theme', choice); else root.removeAttribute('data-theme');
   const dark = (choice || (sysDark.matches ? 'dark' : 'light')) === 'dark';
-  themeBtn.textContent = dark ? '☀︎ Light' : '☾ Dark';
+  themeBtn.textContent = dark ? '☀\uFE0E' : '☾\uFE0E';
   themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+  themeBtn.title = themeBtn.getAttribute('aria-label');
 }
 themeBtn.addEventListener('click', ()=>{
   const cur = document.documentElement.getAttribute('data-theme') || (sysDark.matches ? 'dark' : 'light');
