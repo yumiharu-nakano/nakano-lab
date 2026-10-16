@@ -107,3 +107,7 @@ summary::before {
 details[open] summary::before {
   transform: rotate(90deg) !important;
 }
+/* ライトモードではフッターを白にする */
+[data-theme='light'] .footer {
+  --ifm-footer-background-color: #ffffff;
+}
