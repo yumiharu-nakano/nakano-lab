@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yumiharu Nakano — Research Tree</title>
+<script>
+(function(){try{var t=localStorage.getItem("theme-6c4");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})();
+</script>
 <style>
   :root{
     --bg:#0f1115; --panel:#171a21; --ink:#e8eaed; --sub:#9aa3b2;
@@ -14,7 +17,7 @@
     --canopy-bg1:#1c241d; --canopy-bg2:#171a21; --canopy-border:#2f5e44; --canopy-desc:#bfe8d4;
   }
   @media (prefers-color-scheme: light){
-    :root{
+    :root:not([data-theme="dark"]){
       --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2430; --sub:#5b6472;
       --line:#d8dde6; --accent:#2f6feb;
       --past:#8a93a3; --num:#0284c7; --inv:#db2777; --ot:#7c3aed;
@@ -22,6 +25,14 @@
       --role-ink:#ffffff;
       --canopy-bg1:#f0f7f2; --canopy-bg2:#fbfdfc; --canopy-border:#9fcdb4; --canopy-desc:#1f5b3f;
     }
+  }
+  :root[data-theme="light"]{
+      --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2430; --sub:#5b6472;
+      --line:#d8dde6; --accent:#2f6feb;
+      --past:#8a93a3; --num:#0284c7; --inv:#db2777; --ot:#7c3aed;
+      --gen:#059669; --mfg:#d97706; --root:#64748b; --future:#ea580c;
+      --role-ink:#ffffff;
+      --canopy-bg1:#f0f7f2; --canopy-bg2:#fbfdfc; --canopy-border:#9fcdb4; --canopy-desc:#1f5b3f;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
@@ -38,6 +49,7 @@
   .btn{background:var(--panel);border:1px solid var(--line);color:var(--ink);
     font-size:12.5px;padding:6px 12px;border-radius:7px;cursor:pointer}
   .btn:hover{border-color:var(--accent)}
+  .btn.theme{margin-left:auto}
 
   .legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 22px;
     font-size:11.5px;color:var(--sub);align-items:center}
@@ -113,6 +125,7 @@
   <div class="controls">
     <button class="btn" id="expandAll">Expand all</button>
     <button class="btn" id="collapseAll">Trunks only</button>
+    <button class="btn theme" id="themeToggle" type="button"></button>
   </div>
 
   <div class="legend">
@@ -278,6 +291,30 @@ function makeNode(n){
 }
 
 tree.appendChild(makeNode(T));
+
+const THEME_KEY = 'theme-6c4';
+const themeBtn = document.getElementById('themeToggle');
+const sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+function storedTheme(){
+  try{ const v = localStorage.getItem(THEME_KEY); return (v==='light'||v==='dark') ? v : null; }
+  catch(e){ return null; }
+}
+function applyTheme(choice){
+  const root = document.documentElement;
+  if(choice) root.setAttribute('data-theme', choice); else root.removeAttribute('data-theme');
+  const dark = (choice || (sysDark.matches ? 'dark' : 'light')) === 'dark';
+  themeBtn.textContent = dark ? '☀︎ Light' : '☾ Dark';
+  themeBtn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+themeBtn.addEventListener('click', ()=>{
+  const cur = document.documentElement.getAttribute('data-theme') || (sysDark.matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+  applyTheme(next);
+});
+sysDark.addEventListener('change', ()=>applyTheme(storedTheme()));
+window.addEventListener('storage', e=>{ if(e.key===THEME_KEY) applyTheme(storedTheme()); });
+applyTheme(storedTheme());
 
 document.getElementById('expandAll').onclick = ()=>{
   document.querySelectorAll('li.node').forEach(li=>{
