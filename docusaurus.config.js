@@ -8,6 +8,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const isEn = process.env.DOCUSAURUS_CURRENT_LOCALE === 'en';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '中野張研究室',
@@ -77,6 +79,18 @@ const config = {
       navbar: {
         title: '',
         items: [
+          {
+            to: '/program',
+            label: isEn ? 'Research Program' : '研究プログラム',
+            position: 'left',
+          },
+          {
+            href: isEn
+              ? 'https://yumiharu-nakano.github.io/nakano-lab/tree-en.html'
+              : 'https://yumiharu-nakano.github.io/nakano-lab/tree.html',
+            label: isEn ? 'Research Tree' : '研究系統樹',
+            position: 'left',
+          },
           {
             type: 'localeDropdown',
             position: 'right',

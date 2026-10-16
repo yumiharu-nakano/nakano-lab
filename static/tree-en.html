@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yumiharu Nakano — Research Tree</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --ink:#e8eaed; --sub:#9aa3b2;
+    --line:#2a2f3a; --accent:#7aa2f7;
+    --past:#6b7280; --num:#38bdf8; --inv:#f472b6; --ot:#a78bfa;
+    --gen:#34d399; --mfg:#fbbf24; --root:#94a3b8; --future:#f97316;
+    --role-ink:#0b0d11;
+    --canopy-bg1:#1c241d; --canopy-bg2:#171a21; --canopy-border:#2f5e44; --canopy-desc:#bfe8d4;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2430; --sub:#5b6472;
+      --line:#d8dde6; --accent:#2f6feb;
+      --past:#8a93a3; --num:#0284c7; --inv:#db2777; --ot:#7c3aed;
+      --gen:#059669; --mfg:#d97706; --root:#64748b; --future:#ea580c;
+      --role-ink:#ffffff;
+      --canopy-bg1:#f0f7f2; --canopy-bg2:#fbfdfc; --canopy-border:#9fcdb4; --canopy-desc:#1f5b3f;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Meiryo,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 22px 80px}
+  header h1{font-size:23px;margin:0 0 4px;letter-spacing:.2px}
+  header .lede{color:var(--sub);font-size:13.5px;margin:0 0 2px}
+  header .meta{color:var(--sub);font-size:12px;margin:6px 0 0}
+  header a{color:var(--accent);text-decoration:none}
+  header a:hover{text-decoration:underline}
+
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 10px}
+  .btn{background:var(--panel);border:1px solid var(--line);color:var(--ink);
+    font-size:12.5px;padding:6px 12px;border-radius:7px;cursor:pointer}
+  .btn:hover{border-color:var(--accent)}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 22px;
+    font-size:11.5px;color:var(--sub);align-items:center}
+  .legend .lg{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  /* tree */
+  ul.tree{list-style:none;margin:0;padding:0}
+  ul.tree ul{list-style:none;margin:0;padding:0 0 0 26px;position:relative}
+  li.node{position:relative;padding:5px 0 5px 0}
+  /* connector lines */
+  ul.tree ul::before{content:"";position:absolute;left:10px;top:0;bottom:14px;
+    width:2px;background:var(--line)}
+  li.node>.row::before{content:"";position:absolute;left:-16px;top:22px;
+    width:14px;height:2px;background:var(--line)}
+  ul.tree>li.node>.row::before{display:none}
+
+  .row{position:relative;display:flex;align-items:flex-start;gap:9px}
+  .toggle{flex:0 0 auto;width:18px;height:18px;margin-top:9px;border-radius:5px;
+    border:1px solid var(--line);background:var(--panel);color:var(--sub);
+    font-size:11px;line-height:16px;text-align:center;cursor:pointer;user-select:none}
+  .toggle.empty{visibility:hidden}
+  .toggle:hover{border-color:var(--accent);color:var(--ink)}
+
+  .card{flex:1 1 auto;background:var(--panel);border:1px solid var(--line);
+    border-left-width:4px;border-radius:9px;padding:9px 13px}
+  .card .ttl{font-size:14px;font-weight:600;margin:0;display:flex;
+    align-items:baseline;gap:8px;flex-wrap:wrap}
+  .card .ttl .yr{font-size:11.5px;color:var(--sub);font-weight:500}
+  .card .desc{font-size:12.5px;color:var(--sub);margin:4px 0 0}
+  .tags{margin:7px 0 0;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:10.5px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);
+    color:var(--sub);text-decoration:none}
+  a.tag:hover{border-color:var(--accent);color:var(--accent)}
+  .tag.role{border:none;color:var(--role-ink);font-weight:600}
+  .role.past{background:var(--past)} .role.now{background:var(--num)}
+  .role.future{background:var(--future)}
+
+  /* era accents via class */
+  .e-root{border-left-color:var(--root)}
+  .e-past{border-left-color:var(--past)}
+  .e-num{border-left-color:var(--num)}
+  .e-inv{border-left-color:var(--inv)}
+  .e-ot{border-left-color:var(--ot)}
+  .e-gen{border-left-color:var(--gen)}
+  .e-mfg{border-left-color:var(--mfg)}
+  .e-future{border-left-color:var(--future)}
+
+  li.collapsed>ul{display:none}
+  .wrap{padding-bottom:60px}
+
+  /* root + canopy emphasis */
+  .card.trunk .ttl{font-size:15px}
+  .card.canopy{background:linear-gradient(180deg,var(--canopy-bg1),var(--canopy-bg2));
+    border-color:var(--canopy-border);border-left-color:var(--future)}
+  .card.canopy .ttl{font-size:16px}
+  .card.canopy .desc{color:var(--canopy-desc)}
+  .feeds{font-size:10.5px;color:var(--future);margin-left:6px;white-space:nowrap}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Yumiharu Nakano — Research Tree</h1>
+    <p class="lede">Computational mathematics for stochastic control, optimal transport, and inference</p>
+    <p class="meta">Department of Mathematical and Computing Science, School of Computing, Institute of Science Tokyo ／ Publications:
+      <a href="https://yumiharu-nakano.github.io/nakano-lab/en/" target="_blank">nakano-lab</a>
+      &nbsp;|&nbsp; Click a node to expand or collapse its branch
+      &nbsp;|&nbsp; <a href="tree.html">日本語</a></p>
+  </header>
+
+  <div class="controls">
+    <button class="btn" id="expandAll">Expand all</button>
+    <button class="btn" id="collapseAll">Trunks only</button>
+  </div>
+
+  <div class="legend">
+    <span class="lg"><span class="dot" style="background:var(--root)"></span>Origins</span>
+    <span class="lg"><span class="dot" style="background:var(--past)"></span>Mathematical finance &amp; risk</span>
+    <span class="lg"><span class="dot" style="background:var(--num)"></span>Numerical analysis &amp; kernel collocation</span>
+    <span class="lg"><span class="dot" style="background:var(--inv)"></span>Inverse problems &amp; stochastic control</span>
+    <span class="lg"><span class="dot" style="background:var(--ot)"></span>Optimal transport &amp; SB</span>
+    <span class="lg"><span class="dot" style="background:var(--gen)"></span>Generative models</span>
+    <span class="lg"><span class="dot" style="background:var(--mfg)"></span>Mean-field games</span>
+    <span class="lg"><span class="dot" style="background:var(--future)"></span>Integrated program</span>
+  </div>
+
+  <ul class="tree" id="tree"></ul>
+
+</div>
+
+<script>
+const T = {
+  t:"Research of Yumiharu Nakano", era:"root", trunk:true,
+  d:"A consistent theme is to treat the <b>estimation</b> and <b>control</b> of stochastic processes as computational mathematics with convergence guarantees.",
+  c:[
+    { t:"Trunk A — Numerical analysis and kernel collocation", y:"2014–2026", era:"num", trunk:true, role:"now",
+      d:"This line of work develops numerical methods with guaranteed convergence for partial differential equations arising from stochastic processes, such as the HJB equation from stochastic control and the Zakai equation from filtering. The collocation method based on reproducing kernel Hilbert spaces (RKHS) established here became the core tool shared by all later branches. Recent work extends the scope to comparisons with neural-network methods.",
+      c:[
+        {t:"Approximation schemes for stochastic control", y:"JJIAM 2014", era:"num",
+         d:"Constructs discrete approximation schemes for continuous-time stochastic control problems."},
+        {t:"Quadratic approximations for HJB equations", y:"Automatica 2016", era:"num",
+         d:"Analyzes quadratic approximations of Hamilton–Jacobi–Bellman equations."},
+        {t:"Meshfree collocation for fully nonlinear parabolic equations", y:"Numer. Math. 2017", era:"num",
+         d:"Proves the convergence of kernel collocation methods, providing the mathematical foundation of the RKHS-based approach.",
+         links:[["arXiv:1408.5195","https://arxiv.org/abs/1408.5195"]]},
+        {t:"Convergence of differentiable non-monotone schemes", y:"arXiv 2018", era:"num",
+         d:"Proves the convergence of differentiable schemes for fully nonlinear parabolic equations.",
+         links:[["arXiv:1803.09446","https://arxiv.org/abs/1803.09446"]]},
+        {t:"Kernel collocation for Zakai equations (nonlinear filtering)", y:"SPDE:AC 2019", era:"num",
+         d:"Develops the numerical analysis of the Zakai equation, which describes nonlinear filtering. This work became an entry point to inverse problems and inference.",
+         links:[["arXiv:1710.09090","https://arxiv.org/abs/1710.09090"]]},
+        {t:"Kernel collocation for HJM models", y:"Stochastics 2021 (Kinoshita)", era:"num",
+         d:"Applies kernel collocation to Heath–Jarrow–Morton models under the Musiela parametrization."},
+        {t:"Kernel and neural-network residual methods for HJB equations on unbounded domains", y:"arXiv 2026", era:"num",
+         d:"Analyzes the convergence of kernel and neural-network methods for HJB equations on unbounded domains.",
+         links:[["arXiv:2610.09299","https://arxiv.org/abs/2610.09299"],["code","https://github.com/yumiharu-nakano/hjb-residual-methods"]]}
+      ]},
+
+    { t:"Trunk B — Inverse problems and stochastic optimal control", y:"2021–2026", era:"inv", trunk:true, role:"now", feeds:true,
+      d:"This line of work studies inverse problems that recover the cost functions or potentials behind observed optimal controls. It repurposes the kernel solvers of Trunk A for estimation and forms the main trunk on the identification side of the integrated program.",
+      c:[
+        {t:"Inverse stochastic optimal control", y:"Automatica 2023", era:"inv",
+         d:"Treats the inverse problem for performance criteria with quadratic control penalties. Well-posedness is shown via the stochastic maximum principle, the problem is reduced to root-finding for an expectation involving the value function, and a multidimensional implementation uses kernel collocation for the HJB equation."},
+        {t:"Inverse stochastic control via generalized Schrödinger problems", y:"Syst. Control Lett. 2026", era:"inv",
+         d:"Formulates inverse stochastic control as a generalized Schrödinger problem, establishing a connection to optimal transport.",
+         links:[["doi:10.1016/j.sysconle.2026.106614","https://doi.org/10.1016/j.sysconle.2026.106614"],["arXiv:2601.09210","https://arxiv.org/abs/2601.09210"]]},
+        {t:"Drift-potential identification by an inverse-stochastic-control Galerkin estimator", y:"arXiv 2026", era:"inv",
+         d:"Proposes a method for identifying the drift potential of a Langevin diffusion from discrete, irregular observations. The estimator is obtained in closed form as the solution of a single positive-definite linear system and is free of the drift bias caused by the Euler–Maruyama approximation. The method is applied to animal GPS trajectory data.",
+         links:[["arXiv:2610.04268","https://arxiv.org/abs/2610.04268"],["code","https://github.com/yumiharu-nakano/inverse-drift-potential"]]}
+      ]},
+
+    { t:"Trunk C — Optimal transport, Schrödinger bridges, and kernel methods", y:"2019–2026", era:"ot", trunk:true, role:"now", feeds:true,
+      d:"This line of work solves transport problems between probability measures using RKHS embeddings such as kernel mean embeddings and the MMD. These form the central methods on the transport side of the integrated program.",
+      c:[
+        {t:"Kernel methods for Schrödinger bridges", y:"JJIAM 2026", era:"ot",
+         d:"Considers McKean–Vlasov control problems whose endpoint constraint is relaxed by an MMD penalty, and shows that the resulting ε-optimal controls converge to the solution of the Schrödinger bridge.",
+         links:[["arXiv:2310.14522","https://arxiv.org/abs/2310.14522"],["code","https://github.com/yumiharu-nakano/kernelSB"]]},
+        {t:"Weak approximation of Schrödinger–Föllmer diffusion", y:"Stat.Probab.Lett. 2024 (Endo)", era:"ot",
+         d:"Analyzes the weak approximation of the Schrödinger–Föllmer diffusion used for sampling."},
+        {t:"Multi-marginal optimal transport via Hilbert space embeddings", y:"Statist. Comput. 2026 (Saito)", era:"ot",
+         d:"Proposes a method for multi-marginal optimal transport that combines Hilbert space embeddings of probability measures with deep learning.",
+         links:[["arXiv:2412.03478","https://arxiv.org/abs/2412.03478"],["code","https://github.com/yumiharu-nakano/kernelMMOT"]]},
+        {t:"Solving the Monge problem", y:"ICORES 2025 (Saito)", era:"ot",
+         d:"Constructs approximate solutions of the Monge problem via Hilbert space embeddings of probability measures."},
+        {t:"Continuum-marginal optimal transport (mesh-free)", y:"arXiv 2026", era:"ot",
+         d:"Considers optimal transport in which the marginals at all times are given as data. The weak form of the continuity equation is penalized in an RKHS, and the velocity field is reconstructed without a mesh.",
+         links:[["arXiv:2604.24226","https://arxiv.org/abs/2604.24226"],["code","https://github.com/yumiharu-nakano/alltimeOT"]]}
+      ]},
+
+    { t:"Trunk D — Convergence theory of generative models", y:"2024–2026", era:"gen", trunk:true, role:"now", feeds:true,
+      d:"This line of work provides error bounds for diffusion generative models using forward–backward stochastic differential equations (FBSDEs) and Schrödinger bridge techniques. It is the theoretical foundation on the generation side of the integrated program.",
+      c:[
+        {t:"Structural and convergence analysis of discrete-time DDPMs", y:"arXiv 2024", era:"gen",
+         d:"Bounds the total-variation error of discrete-time DDPMs using FBSDE representations and Schrödinger bridge techniques. Under weak assumptions, the dependence on the dimension and the exponential dependence are improved.",
+         links:[["arXiv:2406.01320","https://arxiv.org/abs/2406.01320"]]}
+      ]},
+
+    { t:"Trunk E — Mean-field games", y:"2024–2026", era:"mfg", trunk:true, role:"now", feeds:true,
+      d:"This line of work treats interactions and equilibria among many agents as constraints on distributions.",
+      c:[
+        {t:"Kernel-based potential mean-field games with unbiased U-statistics", y:"arXiv 2026", era:"mfg",
+         d:"Proposes a method that solves potential mean-field games at the sample level using an MMD penalty and U-statistics built from signed random Fourier features. Almost-sure convergence rates are established, with 100-dimensional Schrödinger bridge experiments and an application to electric-vehicle charging. Schrödinger bridges are included as a special case.",
+         links:[["arXiv:2605.29371","https://arxiv.org/abs/2605.29371"],["code","https://github.com/yumiharu-nakano/kernelMFG-RFU"]]}
+      ]},
+
+    { t:"Origins — Mathematical finance, risk, and insurance", y:"2003–2015", era:"past", trunk:true, role:"past",
+      d:"Starting from hedging under shortfall risk, the research expanded to risk measures, optimal investment, and actuarial mathematics. The interest in distributions, constraints, and optimization that runs through the later work took shape in this period.",
+      c:[
+        {t:"Optimal hedging under shortfall risk", y:"Doctoral thesis 2005 (Hokkaido Univ.)", era:"past",
+         d:"Studies shortfall minimization under coherent risk measures."},
+        {t:"Hedging in jump-diffusion models and of defaultable claims", y:"2004–2011", era:"past",
+         d:"Studies shortfall-risk minimization in jump-diffusion models, and quantile and partial hedging of defaultable claims."},
+        {t:"Optimal investment in market models with memory", y:"2006–2007 (Inoue et al.)", era:"past",
+         d:"Studies long-term optimal investment in market models with memory, and linear filtering of systems with memory with applications to finance."},
+        {t:"Approximation of risk measures and index tracking", y:"2006–2015", era:"past",
+         d:"Studies the approximation of law-invariant comonotonic coherent risk measures, mean-risk optimization for index tracking, and quasi-Monte Carlo methods for Choquet integrals."},
+        {t:"Intertemporal diversification of insurance risk and pension funds", y:"2008–2015 (Fukuda, Ieda et al.)", era:"past",
+         d:"Studies premium principles and optimal intertemporal risk diversification, and liability-tracking management of pension funds. Co-author of the book <i>Mathematics of Finance and Insurance</i> (Iwanami Shoten, 2014, in Japanese)."}
+      ]},
+
+    { t:"🌳 Integrated program — A theory of identification and generation in SDEs", y:"Present → future", era:"future", canopy:true, role:"future",
+      d:"The canopy where Trunks B–E converge. The program studies <b>identification</b> (the inverse problem: estimating the generator of a stochastic process from observed trajectories and snapshots) and <b>generation</b> (the forward problem: producing target distributions from a stochastic differential equation), using stochastic optimal transport, Schrödinger bridges, and FBSDEs as a common language. Its methodological core is to penalize distributional constraints by RKHS distances and to solve them from samples via unbiased U-statistics. A distinguishing feature is the <b>finite-sample guarantees and almost-sure convergence rates</b> that deep-learning approaches lack.",
+      c:[
+        {t:"Topic A — Transport: generalizing stochastic optimal transport", y:"Ongoing", era:"future", role:"now",
+         d:"Establishes the relationship between inverse stochastic control and stochastic optimal transport and the Schrödinger problem as a general framework that contains the classical cases as special instances."},
+        {t:"Topic B — Generation: error analysis with the identified SDE as the forward process", y:"Ongoing", era:"future", role:"now",
+         d:"Extends the error analysis of DDPMs to forward SDEs with general drifts, bounding the initialization, score-estimation, and time-discretization errors separately. This provides a theoretical basis for data-adaptive generation that uses the identified SDE as the forward process."},
+        {t:"Topic C — Coupling: error propagation from identification to generation", y:"Planned", era:"future", role:"future",
+         d:"Establishes a quantitative relation in which the structure of the identified generator governs the error guarantees of generation. This is the key topic linking identification and generation in the program."},
+        {t:"Validation — Langevin identification on ecological data", y:"Ongoing", era:"future", role:"now",
+         d:"Applies the drift-potential identification free of time-step bias (Trunk B) to public ecological data (animal movement trajectories), and validates the pipeline from identification to generation numerically."}
+      ]}
+  ]
+};
+
+const tree = document.getElementById('tree');
+
+function roleTag(r){
+  if(!r) return '';
+  const lab = {past:'Past', now:'Present', future:'Future'}[r];
+  return `<span class="tag role ${r}">${lab}</span>`;
+}
+function makeNode(n){
+  const li = document.createElement('li');
+  li.className = 'node';
+  const hasKids = n.c && n.c.length;
+  let links = '';
+  if(n.links) links = n.links.map(l => l[1]
+      ? `<a class="tag" href="${l[1]}" target="_blank">${l[0]} ↗</a>`
+      : `<span class="tag">${l[0]}</span>`).join('');
+  const feeds = n.feeds ? `<span class="feeds">→ into the program</span>` : '';
+  const cardCls = 'card e-'+n.era + (n.trunk?' trunk':'') + (n.canopy?' canopy':'');
+  li.innerHTML = `
+    <div class="row">
+      <div class="toggle ${hasKids?'':'empty'}">${hasKids?'−':''}</div>
+      <div class="${cardCls}">
+        <p class="ttl">${n.t}<span class="yr">${n.y||''}</span>${feeds}</p>
+        <p class="desc">${n.d||''}</p>
+        <div class="tags">${roleTag(n.role)}${links}</div>
+      </div>
+    </div>`;
+  if(hasKids){
+    const ul = document.createElement('ul');
+    n.c.forEach(ch => ul.appendChild(makeNode(ch)));
+    li.appendChild(ul);
+    const tg = li.querySelector('.toggle');
+    tg.addEventListener('click', e=>{
+      e.stopPropagation();
+      li.classList.toggle('collapsed');
+      tg.textContent = li.classList.contains('collapsed') ? '+' : '−';
+    });
+  }
+  // hide empty tag rows
+  if(!n.role && !n.links){ li.querySelector('.tags').style.display='none'; }
+  return li;
+}
+
+tree.appendChild(makeNode(T));
+
+document.getElementById('expandAll').onclick = ()=>{
+  document.querySelectorAll('li.node').forEach(li=>{
+    li.classList.remove('collapsed');
+    const t=li.querySelector(':scope > .row > .toggle');
+    if(t && !t.classList.contains('empty')) t.textContent='−';
+  });
+};
+document.getElementById('collapseAll').onclick = ()=>{
+  // collapse everything except the very root, so only trunks show
+  document.querySelectorAll('li.node').forEach(li=>{
+    const card = li.querySelector(':scope > .row > .card');
+    const isRoot = card && card.classList.contains('trunk') && li.parentElement.classList.contains('tree');
+    if(!isRoot){
+      li.classList.add('collapsed');
+      const t=li.querySelector(':scope > .row > .toggle');
+      if(t && !t.classList.contains('empty')) t.textContent='+';
+    }
+  });
+  // keep root open
+  const rootLi = document.querySelector('ul.tree > li.node');
+  rootLi.classList.remove('collapsed');
+  rootLi.querySelector(':scope > .row > .toggle').textContent='−';
+};
+</script>
+</body>
+</html>

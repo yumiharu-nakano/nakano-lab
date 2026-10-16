@@ -28,6 +28,8 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 - 確率システムのフィルタリングと逆問題
 - 数理ファイナンス・保険数理
 
+👉 現在の統合プログラム「確率微分方程式における同定と生成の理論」については[研究プログラム](/program)を，研究全体の見取り図は[研究系統樹](https://yumiharu-nakano.github.io/nakano-lab/tree.html)をご覧ください．
+
 ---
 
 <details>

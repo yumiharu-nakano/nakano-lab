@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中野張 研究系統樹 — 確率制御・最適輸送・推論の計算数理</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --ink:#e8eaed; --sub:#9aa3b2;
+    --line:#2a2f3a; --accent:#7aa2f7;
+    --past:#6b7280; --num:#38bdf8; --inv:#f472b6; --ot:#a78bfa;
+    --gen:#34d399; --mfg:#fbbf24; --root:#94a3b8; --future:#f97316;
+    --role-ink:#0b0d11;
+    --canopy-bg1:#1c241d; --canopy-bg2:#171a21; --canopy-border:#2f5e44; --canopy-desc:#bfe8d4;
+  }
+  @media (prefers-color-scheme: light){
+    :root{
+      --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2430; --sub:#5b6472;
+      --line:#d8dde6; --accent:#2f6feb;
+      --past:#8a93a3; --num:#0284c7; --inv:#db2777; --ot:#7c3aed;
+      --gen:#059669; --mfg:#d97706; --root:#64748b; --future:#ea580c;
+      --role-ink:#ffffff;
+      --canopy-bg1:#f0f7f2; --canopy-bg2:#fbfdfc; --canopy-border:#9fcdb4; --canopy-desc:#1f5b3f;
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Meiryo,system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 22px 80px}
+  header h1{font-size:23px;margin:0 0 4px;letter-spacing:.2px}
+  header .lede{color:var(--sub);font-size:13.5px;margin:0 0 2px}
+  header .meta{color:var(--sub);font-size:12px;margin:6px 0 0}
+  header a{color:var(--accent);text-decoration:none}
+  header a:hover{text-decoration:underline}
+
+  .controls{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 10px}
+  .btn{background:var(--panel);border:1px solid var(--line);color:var(--ink);
+    font-size:12.5px;padding:6px 12px;border-radius:7px;cursor:pointer}
+  .btn:hover{border-color:var(--accent)}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:6px 0 22px;
+    font-size:11.5px;color:var(--sub);align-items:center}
+  .legend .lg{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+  /* tree */
+  ul.tree{list-style:none;margin:0;padding:0}
+  ul.tree ul{list-style:none;margin:0;padding:0 0 0 26px;position:relative}
+  li.node{position:relative;padding:5px 0 5px 0}
+  /* connector lines */
+  ul.tree ul::before{content:"";position:absolute;left:10px;top:0;bottom:14px;
+    width:2px;background:var(--line)}
+  li.node>.row::before{content:"";position:absolute;left:-16px;top:22px;
+    width:14px;height:2px;background:var(--line)}
+  ul.tree>li.node>.row::before{display:none}
+
+  .row{position:relative;display:flex;align-items:flex-start;gap:9px}
+  .toggle{flex:0 0 auto;width:18px;height:18px;margin-top:9px;border-radius:5px;
+    border:1px solid var(--line);background:var(--panel);color:var(--sub);
+    font-size:11px;line-height:16px;text-align:center;cursor:pointer;user-select:none}
+  .toggle.empty{visibility:hidden}
+  .toggle:hover{border-color:var(--accent);color:var(--ink)}
+
+  .card{flex:1 1 auto;background:var(--panel);border:1px solid var(--line);
+    border-left-width:4px;border-radius:9px;padding:9px 13px}
+  .card .ttl{font-size:14px;font-weight:600;margin:0;display:flex;
+    align-items:baseline;gap:8px;flex-wrap:wrap}
+  .card .ttl .yr{font-size:11.5px;color:var(--sub);font-weight:500}
+  .card .desc{font-size:12.5px;color:var(--sub);margin:4px 0 0}
+  .tags{margin:7px 0 0;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:10.5px;padding:2px 8px;border-radius:20px;border:1px solid var(--line);
+    color:var(--sub);text-decoration:none}
+  a.tag:hover{border-color:var(--accent);color:var(--accent)}
+  .tag.role{border:none;color:var(--role-ink);font-weight:600}
+  .role.past{background:var(--past)} .role.now{background:var(--num)}
+  .role.future{background:var(--future)}
+
+  /* era accents via class */
+  .e-root{border-left-color:var(--root)}
+  .e-past{border-left-color:var(--past)}
+  .e-num{border-left-color:var(--num)}
+  .e-inv{border-left-color:var(--inv)}
+  .e-ot{border-left-color:var(--ot)}
+  .e-gen{border-left-color:var(--gen)}
+  .e-mfg{border-left-color:var(--mfg)}
+  .e-future{border-left-color:var(--future)}
+
+  li.collapsed>ul{display:none}
+  .wrap{padding-bottom:60px}
+
+  /* root + canopy emphasis */
+  .card.trunk .ttl{font-size:15px}
+  .card.canopy{background:linear-gradient(180deg,var(--canopy-bg1),var(--canopy-bg2));
+    border-color:var(--canopy-border);border-left-color:var(--future)}
+  .card.canopy .ttl{font-size:16px}
+  .card.canopy .desc{color:var(--canopy-desc)}
+  .feeds{font-size:10.5px;color:var(--future);margin-left:6px;white-space:nowrap}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>中野 張 — 研究系統樹</h1>
+    <p class="lede">確率制御・最適輸送・推論の計算数理</p>
+    <p class="meta">東京科学大学 情報理工学院 数理・計算科学系 ／ 業績:
+      <a href="https://yumiharu-nakano.github.io/nakano-lab/" target="_blank">nakano-lab</a>
+      &nbsp;|&nbsp; ノードをクリックで枝を開閉
+      &nbsp;|&nbsp; <a href="tree-en.html">English</a></p>
+  </header>
+
+  <div class="controls">
+    <button class="btn" id="expandAll">すべて展開</button>
+    <button class="btn" id="collapseAll">幹だけ表示</button>
+  </div>
+
+  <div class="legend">
+    <span class="lg"><span class="dot" style="background:var(--root)"></span>起源</span>
+    <span class="lg"><span class="dot" style="background:var(--past)"></span>数理ファイナンス・リスク</span>
+    <span class="lg"><span class="dot" style="background:var(--num)"></span>数値解析・カーネル選点法</span>
+    <span class="lg"><span class="dot" style="background:var(--inv)"></span>逆問題・確率最適制御</span>
+    <span class="lg"><span class="dot" style="background:var(--ot)"></span>最適輸送・SB</span>
+    <span class="lg"><span class="dot" style="background:var(--gen)"></span>生成モデル</span>
+    <span class="lg"><span class="dot" style="background:var(--mfg)"></span>平均場ゲーム</span>
+    <span class="lg"><span class="dot" style="background:var(--future)"></span>統合プログラム</span>
+  </div>
+
+  <ul class="tree" id="tree"></ul>
+
+</div>
+
+<script>
+const T = {
+  t:"中野 張の研究", era:"root", trunk:true,
+  d:"確率過程の<b>推定</b>と<b>制御</b>を，収束保証をもつ計算数理として扱うことが一貫したテーマである．",
+  c:[
+    { t:"幹A — 数値解析・カーネル選点法", y:"2014–2026", era:"num", trunk:true, role:"now",
+      d:"確率制御から導かれるHJB方程式や，フィルタリングから導かれるZakai方程式など，確率過程に由来する偏微分方程式に対して，収束が保証された数値解法を研究してきた．ここで確立した再生核ヒルベルト空間（RKHS）による選点法は，以後のすべての枝に共通する中核的な道具となっている．近年はニューラルネットワーク法との比較へと射程を広げている．",
+      c:[
+        {t:"確率制御の近似スキーム", y:"JJIAM 2014", era:"num",
+         d:"連続時間の確率制御問題に対する離散近似スキームを構成した．"},
+        {t:"HJB方程式の二次近似", y:"Automatica 2016", era:"num",
+         d:"Hamilton–Jacobi–Bellman方程式の二次近似を理論的に解析した．"},
+        {t:"完全非線形放物型方程式のメッシュフリー選点法", y:"Numer. Math. 2017", era:"num",
+         d:"カーネル選点法の収束を証明し，RKHSに基づく手法の数学的な基盤を与えた．",
+         links:[["arXiv:1408.5195","https://arxiv.org/abs/1408.5195"]]},
+        {t:"微分可能・非単調スキームの収束理論", y:"arXiv 2018", era:"num",
+         d:"完全非線形放物型方程式に対して，微分可能なスキームの収束を示した．",
+         links:[["arXiv:1803.09446","https://arxiv.org/abs/1803.09446"]]},
+        {t:"Zakai方程式のカーネル選点法（非線形フィルタ）", y:"SPDE:AC 2019", era:"num",
+         d:"非線形フィルタリングを記述するZakai方程式の数値解析を行った．逆問題・推論へとつながる入口となった研究である．",
+         links:[["arXiv:1710.09090","https://arxiv.org/abs/1710.09090"]]},
+        {t:"HJMモデルのカーネル選点法", y:"Stochastics 2021 (Kinoshita)", era:"num",
+         d:"Musielaパラメトリゼーションを用いたHeath–Jarrow–Mortonモデルに，カーネル選点法を適用した．"},
+        {t:"HJB方程式のカーネル・NN残差法の収束（非有界領域）", y:"arXiv 2026", era:"num",
+         d:"非有界領域上のHJB方程式に対して，カーネル法とニューラルネットワーク法の収束を解析した．",
+         links:[["arXiv:2610.09299","https://arxiv.org/abs/2610.09299"],["code","https://github.com/yumiharu-nakano/hjb-residual-methods"]]}
+      ]},
+
+    { t:"幹B — 逆問題・確率最適制御", y:"2021–2026", era:"inv", trunk:true, role:"now", feeds:true,
+      d:"最適制御の観測データから，背後にある費用関数やポテンシャルを復元する逆問題を研究している．幹Aのカーネル解法を推定に転用しており，統合プログラムにおける同定側の主幹である．",
+      c:[
+        {t:"逆確率最適制御", y:"Automatica 2023", era:"inv",
+         d:"二次の制御罰則をもつ性能指標の逆問題を扱った．確率最大原理により適切性を示し，価値関数を含む期待値の求根問題に帰着させたうえで，HJB方程式のカーネル選点法により多次元で実装した．"},
+        {t:"一般化シュレディンガー問題による逆確率制御", y:"Syst. Control Lett. 2026", era:"inv",
+         d:"逆確率制御を一般化シュレディンガー問題として定式化し，最適輸送との接続を与えた．",
+         links:[["doi:10.1016/j.sysconle.2026.106614","https://doi.org/10.1016/j.sysconle.2026.106614"],["arXiv:2601.09210","https://arxiv.org/abs/2601.09210"]]},
+        {t:"逆確率制御Galerkinによるドリフトポテンシャル同定", y:"arXiv 2026", era:"inv",
+         d:"離散的かつ不規則な観測から，Langevin拡散のドリフトポテンシャルを同定する手法を提案した．推定量は単一の正定値線形系の解として閉じた形で得られ，Euler–Maruyama近似に由来するドリフトのバイアスを含まない．動物のGPS軌道データに応用した．",
+         links:[["arXiv:2610.04268","https://arxiv.org/abs/2610.04268"],["code","https://github.com/yumiharu-nakano/inverse-drift-potential"]]}
+      ]},
+
+    { t:"幹C — 最適輸送・シュレディンガー橋・カーネル法", y:"2019–2026", era:"ot", trunk:true, role:"now", feeds:true,
+      d:"カーネル平均埋め込みやMMDといったRKHS埋め込みを用いて，確率測度の間の輸送問題を解く研究である．統合プログラムにおける輸送側の中心的な手法となっている．",
+      c:[
+        {t:"カーネル法によるシュレディンガー橋", y:"JJIAM 2026", era:"ot",
+         d:"端点制約をMMD罰則で緩和したMcKean–Vlasov型の制御問題を考え，そのε-最適制御がシュレディンガー橋の解に収束することを示した．",
+         links:[["arXiv:2310.14522","https://arxiv.org/abs/2310.14522"],["code","https://github.com/yumiharu-nakano/kernelSB"]]},
+        {t:"Schrödinger–Föllmer拡散の弱近似", y:"Stat.Probab.Lett. 2024 (Endo)", era:"ot",
+         d:"サンプリングに用いられるSchrödinger–Föllmer拡散の弱近似を解析した．"},
+        {t:"ヒルベルト空間埋め込みによる多周辺最適輸送", y:"Statist. Comput. 2026 (Saito)", era:"ot",
+         d:"確率測度のヒルベルト空間埋め込みと深層学習を組み合わせ，多周辺最適輸送の解法を提案した．",
+         links:[["arXiv:2412.03478","https://arxiv.org/abs/2412.03478"],["code","https://github.com/yumiharu-nakano/kernelMMOT"]]},
+        {t:"Monge問題の解法", y:"ICORES 2025 (Saito)", era:"ot",
+         d:"確率測度のヒルベルト空間埋め込みにより，Monge問題の近似解を構成した．"},
+        {t:"連続周辺最適輸送（メッシュフリー）", y:"arXiv 2026", era:"ot",
+         d:"すべての時刻の周辺分布がデータとして与えられる連続周辺最適輸送を考えた．連続の方程式の弱形式をRKHSで罰則化し，速度場をメッシュフリーに再構成する．",
+         links:[["arXiv:2604.24226","https://arxiv.org/abs/2604.24226"],["code","https://github.com/yumiharu-nakano/alltimeOT"]]}
+      ]},
+
+    { t:"幹D — 生成モデルの収束理論", y:"2024–2026", era:"gen", trunk:true, role:"now", feeds:true,
+      d:"前進後退確率微分方程式（FBSDE）とシュレディンガー橋の技法を用いて，拡散生成モデルの誤差評価を与える研究である．統合プログラムにおける生成側の理論的な基盤となっている．",
+      c:[
+        {t:"離散時間DDPMの構造・収束解析", y:"arXiv 2024", era:"gen",
+         d:"離散時間DDPMの全変動距離での誤差を，FBSDE表現とシュレディンガー橋の技法により評価した．弱い仮定のもとで，次元への依存性と指数的な依存性を改善している．",
+         links:[["arXiv:2406.01320","https://arxiv.org/abs/2406.01320"]]}
+      ]},
+
+    { t:"幹E — 平均場ゲーム", y:"2024–2026", era:"mfg", trunk:true, role:"now", feeds:true,
+      d:"多数の主体の相互作用と均衡を，分布に対する制約として扱う研究である．",
+      c:[
+        {t:"カーネル型ポテンシャル平均場ゲームと不偏U統計量", y:"arXiv 2026", era:"mfg",
+         d:"ポテンシャル型平均場ゲームを，MMD罰則と符号付きランダムフーリエ特徴によるU統計量を用いて標本レベルで解く手法を提案した．概収束のレートを示し，100次元のシュレディンガー橋の数値実験と電気自動車の充電問題への応用を行った．シュレディンガー橋は特殊な場合として含まれる．",
+         links:[["arXiv:2605.29371","https://arxiv.org/abs/2605.29371"],["code","https://github.com/yumiharu-nakano/kernelMFG-RFU"]]}
+      ]},
+
+    { t:"起源 — 数理ファイナンス・リスク・保険", y:"2003–2015", era:"past", trunk:true, role:"past",
+      d:"不足リスクのもとでのヘッジから出発し，リスク測度，最適投資，保険数理へと研究を広げた．後年の研究に通じる，分布・制約・最適化への関心はこの時期に育まれた．",
+      c:[
+        {t:"不足リスク下の最適ヘッジ", y:"博士論文 2005 (北大)", era:"past",
+         d:"コヒーレントリスク測度のもとでのショートフォール最小化を研究した．"},
+        {t:"ジャンプ拡散・デフォルト債のヘッジ", y:"2004–2011", era:"past",
+         d:"ジャンプ拡散モデルにおけるショートフォールリスクの最小化と，デフォルトリスクのある請求権に対するクォンタイルヘッジ・部分ヘッジを研究した．"},
+        {t:"記憶を持つ市場モデルにおける最適投資", y:"2006–2007 (Inoue他)", era:"past",
+         d:"記憶を持つ市場モデルにおける長期最適投資と，記憶を持つシステムの線形フィルタリングおよびその金融への応用を研究した．"},
+        {t:"リスク測度の近似・インデックス追跡", y:"2006–2015", era:"past",
+         d:"法則不変かつ共単調なコヒーレントリスク測度の近似，インデックス追跡のための平均-リスク最適化，Choquet積分に対する準モンテカルロ法を研究した．"},
+        {t:"保険リスクの異時点間分散・年金", y:"2008–2015 (Fukuda/Ieda他)", era:"past",
+         d:"保険料原理と異時点間の最適リスク分散，負債追跡型の年金運用を研究した．著書に『ファイナンスと保険の数理』（岩波書店，2014）がある．"}
+      ]},
+
+    { t:"🌳 統合プログラム — 確率微分方程式における同定と生成の理論", y:"現在〜未来", era:"future", canopy:true, role:"future",
+      d:"<b>Identification and generation in SDEs.</b> 幹B〜Eが合流する樹冠である．軌道やスナップショットの観測から確率過程の生成器を推定する<b>同定</b>（逆問題）と，確率微分方程式から望みの分布をつくる<b>生成</b>（順問題）を，確率最適輸送・シュレディンガー橋・FBSDEを共通の言語として研究する．分布に対する制約をRKHSの距離で罰則化し，不偏U統計量により標本から解くことが方法論の中心にあり，深層学習的な手法にはない<b>有限標本保証と概収束のレート</b>を備える点に特徴がある．",
+      c:[
+        {t:"課題A — 輸送：確率最適輸送の一般化", y:"進行中", era:"future", role:"now",
+         d:"逆確率制御と確率最適輸送・シュレディンガー問題の関係を，古典的な場合を特殊例として含む一般的な枠組みとして確立する．"},
+        {t:"課題B — 生成：同定したSDEを前進過程とする誤差解析", y:"進行中", era:"future", role:"now",
+         d:"DDPMの誤差解析を一般のドリフトをもつ前進確率微分方程式へと拡張し，初期化・スコア推定・時間離散化の誤差を分けて評価する．同定した確率微分方程式を前進過程として用いる，データ適応的な生成の理論的基盤となる．"},
+        {t:"課題C — 連結：同定から生成への誤差伝播", y:"構想", era:"future", role:"future",
+         d:"同定によって得られる生成器の構造が，生成側の誤差保証を定量的に支配する関係を確立する．同定と生成をつなぐ，本プログラムの要となる課題である．"},
+        {t:"実証 — Langevin同定の生態データへの応用", y:"進行中", era:"future", role:"now",
+         d:"時間刻みによるバイアスを含まないドリフトポテンシャル同定（幹B）を公開の生態データ（動物の行動軌道）に適用し，同定から生成までを一貫して数値的に検証する．"}
+      ]}
+  ]
+};
+
+const tree = document.getElementById('tree');
+
+function roleTag(r){
+  if(!r) return '';
+  const lab = {past:'過去', now:'現在', future:'未来'}[r];
+  return `<span class="tag role ${r}">${lab}</span>`;
+}
+function makeNode(n){
+  const li = document.createElement('li');
+  li.className = 'node';
+  const hasKids = n.c && n.c.length;
+  let links = '';
+  if(n.links) links = n.links.map(l => l[1]
+      ? `<a class="tag" href="${l[1]}" target="_blank">${l[0]} ↗</a>`
+      : `<span class="tag">${l[0]}</span>`).join('');
+  const feeds = n.feeds ? `<span class="feeds">→ 統合へ</span>` : '';
+  const cardCls = 'card e-'+n.era + (n.trunk?' trunk':'') + (n.canopy?' canopy':'');
+  li.innerHTML = `
+    <div class="row">
+      <div class="toggle ${hasKids?'':'empty'}">${hasKids?'−':''}</div>
+      <div class="${cardCls}">
+        <p class="ttl">${n.t}<span class="yr">${n.y||''}</span>${feeds}</p>
+        <p class="desc">${n.d||''}</p>
+        <div class="tags">${roleTag(n.role)}${links}</div>
+      </div>
+    </div>`;
+  if(hasKids){
+    const ul = document.createElement('ul');
+    n.c.forEach(ch => ul.appendChild(makeNode(ch)));
+    li.appendChild(ul);
+    const tg = li.querySelector('.toggle');
+    tg.addEventListener('click', e=>{
+      e.stopPropagation();
+      li.classList.toggle('collapsed');
+      tg.textContent = li.classList.contains('collapsed') ? '+' : '−';
+    });
+  }
+  // hide empty tag rows
+  if(!n.role && !n.links){ li.querySelector('.tags').style.display='none'; }
+  return li;
+}
+
+tree.appendChild(makeNode(T));
+
+document.getElementById('expandAll').onclick = ()=>{
+  document.querySelectorAll('li.node').forEach(li=>{
+    li.classList.remove('collapsed');
+    const t=li.querySelector(':scope > .row > .toggle');
+    if(t && !t.classList.contains('empty')) t.textContent='−';
+  });
+};
+document.getElementById('collapseAll').onclick = ()=>{
+  // collapse everything except the very root, so only trunks show
+  document.querySelectorAll('li.node').forEach(li=>{
+    const card = li.querySelector(':scope > .row > .card');
+    const isRoot = card && card.classList.contains('trunk') && li.parentElement.classList.contains('tree');
+    if(!isRoot){
+      li.classList.add('collapsed');
+      const t=li.querySelector(':scope > .row > .toggle');
+      if(t && !t.classList.contains('empty')) t.textContent='+';
+    }
+  });
+  // keep root open
+  const rootLi = document.querySelector('ul.tree > li.node');
+  rootLi.classList.remove('collapsed');
+  rootLi.querySelector(':scope > .row > .toggle').textContent='−';
+};
+</script>
+</body>
+</html>
