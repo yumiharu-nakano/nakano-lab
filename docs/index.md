@@ -65,7 +65,7 @@ Computational mathematics for stochastic control, optimal transport, and inferen
 - T. Saito and Y. Nakano. Solving Monge Problem by Hilbert Space Embeddings of Probability Measures, Proceedings of the 14th International Conference on Operations Research and Enterprise Systems - Volume 1: ICORES, SciTePress, pp. 294-300, 2025. (See also [arXiv:2412.03478[math.OC]](https://arxiv.org/abs/2412.03478).)
 - K. Endo and Y. Nakano. Weak approximation of Schrödinger-Föllmer diffusion, Statist. Probab. Lett., 213 (2024), 110171.
 - Y. Nakano. Inverse stochastic optimal controls, Automatica, 149 (2023), 110831.
-- Y. Kinoshita and Y. Nakano. Kernel-based collocation methods for Heath-Jarrow-Morton models with Musiela parametrization, Stochastics, 93 (2021), 921-944.
+- Y. Kinoshita and Y. Nakano. Kernel-based collocation methods for Heath-Jarrow-Morton models with Musiela parametrization, Stochastics, 93 (2021), 921-944. (See also [arXiv:1809.05643 [q-fin.CP]](https://arxiv.org/abs/1809.05643).)
 - 中野張. カーネル選点法によるZakai方程式の数値解析，システム／制御／情報，64 (2020), 258-263.
 - 中野張. 非線形偏微分方程式に対するカーネル選点法，応用数理，4 (2019), 18-25．
 - Y. Nakano. Kernel-based collocation methods for Zakai equations, Stoch. Partial Differ. Equ. Anal. Comput., 7 (2019), 476-494. (See also [arXiv:1710.09090[math.NA]](https://arxiv.org/abs/1710.09090).)
