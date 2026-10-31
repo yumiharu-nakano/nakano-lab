@@ -46,7 +46,7 @@ The methodological core is to formulate constraints on distributions as **distan
 
 - A kernel-based method for Schrödinger bridges — Jpn. J. Ind. Appl. Math. 43 (2026), 46 [[arXiv:2310.14522](https://arxiv.org/abs/2310.14522)] [[code](https://github.com/yumiharu-nakano/kernelSB)]
 - Multi-marginal optimal transport via Hilbert space embeddings — Statist. Comput. 36 (2026), 118 [[arXiv:2412.03478](https://arxiv.org/abs/2412.03478)] [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
-- Continuum-marginal optimal transport: a mesh-free kernel method — [arXiv:2604.24226](https://arxiv.org/abs/2604.24226) [[code](https://github.com/yumiharu-nakano/alltimeOT)]
+- Continuum-marginal optimal transport: a mesh-free kernel method — [Transactions on Machine Learning Research (2026)](https://openreview.net/forum?id=1bzgCxWYpr) [[arXiv:2604.24226](https://arxiv.org/abs/2604.24226)] [[code](https://github.com/yumiharu-nakano/alltimeOT)]
 
 **Generation (forward problem)**
 

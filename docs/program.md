@@ -50,7 +50,7 @@ Identify, from observed trajectories and snapshots, the generator driving a stoc
 
 - カーネル法によるシュレディンガー橋 — Jpn. J. Ind. Appl. Math. 43 (2026), 46 [[arXiv:2310.14522](https://arxiv.org/abs/2310.14522)] [[code](https://github.com/yumiharu-nakano/kernelSB)]
 - ヒルベルト空間埋め込みによる多周辺最適輸送 — Statist. Comput. 36 (2026), 118 [[arXiv:2412.03478](https://arxiv.org/abs/2412.03478)] [[code](https://github.com/yumiharu-nakano/kernelMMOT)]
-- 連続周辺最適輸送のメッシュフリー・カーネル法 — [arXiv:2604.24226](https://arxiv.org/abs/2604.24226) [[code](https://github.com/yumiharu-nakano/alltimeOT)]
+- 連続周辺最適輸送のメッシュフリー・カーネル法 — [Transactions on Machine Learning Research (2026)](https://openreview.net/forum?id=1bzgCxWYpr) [[arXiv:2604.24226](https://arxiv.org/abs/2604.24226)] [[code](https://github.com/yumiharu-nakano/alltimeOT)]
 
 **生成（順問題）側**
 
